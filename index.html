@@ -4,6 +4,12 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Slideshow</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allan:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
@@ -11,16 +17,35 @@
     <body>
         <div class="info">
             <h2>My Favorite Hiking Photos</h2>
-            <h3>A slideshow coded in HTML, CSS Flexbox, and JavaScript</h3>
+            <h5>A slideshow coded in HTML, CSS, and JavaScript</h5>
         </div>
         <div class="main">
             <div class="frame">
                 <div class="slideshow">
-                    <img src="img/555.jpg" height="500px">
+                    <img src="img/555.jpg" height="500px" id="1" class="hide">
+                    <img src="img/IMG_20161125_213545.jpg" height="500px" id="2" class="show">
                 </div>
             </div>
             <div class="navcontainer">
-                <p>This is the nav area for arrows and circles</p>
+                <div class="leftarrow">
+                    <i class="fas fa-arrow-circle-left"></i>
+                </div>
+                <div class="circlesdiv">
+                <div class="circle"><i class="far fa-circle"></i></div>
+                <div class="circle"><i class="fas fa-circle"></i></div>
+                <div class="circle"><i class="far fa-circle"></i></div>
+                <div class="circle"><i class="far fa-circle"></i></div>
+                <div class="circle"><i class="far fa-circle"></i></div>
+                <div class="circle"><i class="far fa-circle"></i></div>
+                <div class="circle"><i class="far fa-circle"></i></div>
+                <div class="circle"><i class="far fa-circle"></i></div>
+                <div class="circle"><i class="far fa-circle"></i></div>
+                <div class="circle"><i class="far fa-circle"></i></div>
+                </div>
+                <div class="rightarrow">
+                    <i class="fas fa-arrow-circle-right"></i>
+                </div>
+                
             </div>
         </div>
         <script src="script.js" async defer></script>

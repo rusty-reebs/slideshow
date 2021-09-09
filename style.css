@@ -2,8 +2,57 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: black;
 }
 
 .info {
   /* height: 200px; */
+  text-align: center;
+  color: antiquewhite;
+  font-family: "Allan", cursive;
+  font-size: 30px;
+}
+
+h2 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+h5 {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.navcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: antiquewhite;
+  font-size: 35px;
+}
+
+.leftarrow {
+  justify-content: left;
+}
+.circlesdiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  display: flex;
+  margin-left: 5px;
+  margin-right: 5px;
+  align-items: center;
+}
+
+.rightarrow {
+  justify-content: right;
+}
+.fa-circle {
+  font-size: 18px;
+}
+.hide {
+  display: none;
 }
