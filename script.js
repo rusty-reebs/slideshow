@@ -23,11 +23,13 @@ const photos = [
   photo9,
   photo10,
 ];
+let activeSlide;
 
 const circles = document.querySelectorAll(".icon");
 circles.forEach((circle, index) => {
   circle.addEventListener("click", () => {
-    console.log(index);
+    activeSlide = index;
+    console.log(activeSlide, "is active");
     circles.forEach((circle) => {
       unfillCircles(circle);
     });
@@ -43,9 +45,56 @@ const initialize = () => {
   document.getElementById("pic1").classList.toggle("hide");
   document.getElementById("circle1").classList.add("fas");
   document.getElementById("circle1").classList.add("fa-circle");
+  activeSlide = 0;
 };
 
-const nextSlide = () => {};
+const forwardArrowBtn = document.querySelector(".rightarrow");
+forwardArrowBtn.addEventListener("click", () => {
+  // if (position == 9) {
+  // position = 0;
+  // } else {
+  activeSlide = activeSlide + 1;
+  // }
+  // if (position > 9) {
+  // initialize(); // not working correctly
+  // }
+  console.log("now", activeSlide, "is active");
+  nextSlide(activeSlide);
+});
+
+const backArrowBtn = document.querySelector(".leftarrow");
+backArrowBtn.addEventListener("click", () => {
+  activeSlide = activeSlide - 1;
+  console.log("now", activeSlide, "is showing");
+  previousSlide(activeSlide);
+});
+
+const previousSlide = (index) => {
+  circles.forEach((circle) => {
+    unfillCircles(circle);
+  });
+  circles[index].classList.add("fas");
+  circles[index].classList.add("fa-circle");
+  photos[index + 1].classList.add("hide");
+  photos[index].classList.toggle("hide");
+};
+
+const nextSlide = (index) => {
+  circles.forEach((circle) => {
+    unfillCircles(circle);
+  });
+  circles[index].classList.add("fas");
+  circles[index].classList.add("fa-circle");
+  // if (index == 9) {
+  // index = 0;
+  // } else {
+  photos[index - 1].classList.add("hide");
+  photos[index].classList.toggle("hide");
+  // }
+  // if (index > 9) {
+  // initialize();
+  // }
+};
 
 const unfillCircles = (circle) => {
   circle.classList.remove("fas");
@@ -59,3 +108,4 @@ const fillCircle = (circle) => {
 };
 
 initialize();
+console.log(activeSlide);
