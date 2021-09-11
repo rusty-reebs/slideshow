@@ -6,7 +6,6 @@ body {
 }
 
 .info {
-  /* height: 200px; */
   text-align: center;
   color: antiquewhite;
   font-family: "Allan", cursive;
@@ -23,12 +22,12 @@ h5 {
   margin-bottom: 15px;
 }
 
-/* TODO slide transition */
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .navcontainer {
   display: flex;
   width: 666px;
@@ -40,6 +39,7 @@ h5 {
 
 .leftarrow {
   justify-content: left;
+  cursor: pointer;
 }
 .circlesdiv {
   display: flex;
@@ -53,17 +53,16 @@ h5 {
   margin-left: 5px;
   margin-right: 5px;
   align-items: center;
+  cursor: pointer;
 }
 
 .rightarrow {
   justify-content: right;
+  cursor: pointer;
 }
 .fa-circle {
   font-size: 18px;
 }
 .hide {
   display: none;
-}
-
-.filledcircle {
 }
