@@ -23,13 +23,14 @@ const photos = [
   photo9,
   photo10,
 ];
+
 let activeSlide;
 
 const circles = document.querySelectorAll(".icon");
 circles.forEach((circle, index) => {
   circle.addEventListener("click", () => {
+    stopInterval();
     activeSlide = index;
-    console.log(activeSlide, "is active");
     circles.forEach((circle) => {
       unfillCircles(circle);
     });
@@ -38,6 +39,7 @@ circles.forEach((circle, index) => {
       photo.classList.add("hide");
     });
     photos[index].classList.toggle("hide");
+    interval();
   });
 });
 
@@ -46,27 +48,29 @@ const initialize = () => {
   document.getElementById("circle1").classList.add("fas");
   document.getElementById("circle1").classList.add("fa-circle");
   activeSlide = 0;
+  interval();
 };
 
 const forwardArrowBtn = document.querySelector(".rightarrow");
 forwardArrowBtn.addEventListener("click", () => {
-  // if (position == 9) {
-  // position = 0;
-  // } else {
+  stopInterval();
   activeSlide = activeSlide + 1;
-  // }
-  // if (position > 9) {
-  // initialize(); // not working correctly
-  // }
-  console.log("now", activeSlide, "is active");
+  if (activeSlide > 9) {
+    activeSlide = 0;
+  }
   nextSlide(activeSlide);
+  interval();
 });
 
 const backArrowBtn = document.querySelector(".leftarrow");
 backArrowBtn.addEventListener("click", () => {
+  stopInterval();
   activeSlide = activeSlide - 1;
-  console.log("now", activeSlide, "is showing");
+  if (activeSlide < 0) {
+    activeSlide = 9;
+  }
   previousSlide(activeSlide);
+  interval();
 });
 
 const previousSlide = (index) => {
@@ -75,8 +79,13 @@ const previousSlide = (index) => {
   });
   circles[index].classList.add("fas");
   circles[index].classList.add("fa-circle");
-  photos[index + 1].classList.add("hide");
-  photos[index].classList.toggle("hide");
+  if (index == 9) {
+    photos[0].classList.add("hide");
+    photos[9].classList.toggle("hide");
+  } else {
+    photos[index + 1].classList.add("hide");
+    photos[index].classList.toggle("hide");
+  }
 };
 
 const nextSlide = (index) => {
@@ -85,15 +94,13 @@ const nextSlide = (index) => {
   });
   circles[index].classList.add("fas");
   circles[index].classList.add("fa-circle");
-  // if (index == 9) {
-  // index = 0;
-  // } else {
-  photos[index - 1].classList.add("hide");
-  photos[index].classList.toggle("hide");
-  // }
-  // if (index > 9) {
-  // initialize();
-  // }
+  if (index == 0) {
+    photos[9].classList.add("hide");
+    photos[0].classList.toggle("hide");
+  } else {
+    photos[index - 1].classList.add("hide");
+    photos[index].classList.toggle("hide");
+  }
 };
 
 const unfillCircles = (circle) => {
@@ -107,5 +114,19 @@ const fillCircle = (circle) => {
   circle.classList.add("fa-circle");
 };
 
+let timing;
+const interval = () => {
+  timing = setInterval(() => {
+    activeSlide = activeSlide + 1;
+    if (activeSlide > 9) {
+      activeSlide = 0;
+    }
+    nextSlide(activeSlide);
+  }, 3000);
+};
+
+const stopInterval = () => {
+  clearInterval(timing);
+};
+
 initialize();
-console.log(activeSlide);
